@@ -1,0 +1,57 @@
+#!/bin/sh
+
+tmux kill-session -t sysrepo
+tmux new-session -d -s sysrepo
+
+tmux new-window -t sysrepo:1 -n 'sysrepod'
+tmux send-keys -t sysrepo:1 'sysrepod' enter
+
+tmux new-window -t sysrepo:2 -n 'hello-ifstat'
+tmux send-keys -t sysrepo:2 'hello-ifstat' enter
+
+tmux new-window -t sysrepo:3 -n 'sysrepo-cli'
+tmux send-keys -t sysrepo:3 'sysrepo' enter
+
+tmux a -t sysrepo
+
+# tmux new-window -t sysrepo:1 -n 'ubus'
+# tmux send-keys -t sysrepo:1 'sudo ubusd' enter
+#
+# tmux select-window -t sysrepo:0
+# tmux send-keys -t sysrepo:0 'sleep 1 ; sudo chown build:build /run/ubus.sock' enter
+#
+# tmux new-window -t netconf:2 -n 'ssh'
+# tmux send-keys -t netconf:2 'ps auxf | fgrep ssh | fgrep sshd_config_netconf | fgrep D | cut -d " " -f7 | xargs sudo kill -9' enter
+# tmux send-keys -t netconf:2 'sudo /usr/sbin/sshd -f /etc/ssh/sshd_config_netconf -D' enter
+#
+# tmux new-window -t netconf:3 -n 'sysrepo'
+# tmux send-keys -t netconf:3 'cd /opt/dev/sysrepod/server/' enter
+# tmux send-keys -t netconf:3 'cd /opt/dev/sysrepod/server/' enter
+# tmux send-keys -t netconf:3 './sysrepod param' enter
+# 
+# tmux new-window -t netconf:4 -n 'ifstat'
+# tmux send-keys -t netconf:4 'sleep 1 ; cd /opt/dev/libsysrepo/demo/proc/net/tools/' enter
+# tmux send-keys -t netconf:4 './ifstat' enter
+# 
+# tmux new-window -t netconf:5 -n 'testconf'
+# tmux send-keys -t netconf:5 'cd /opt/dev/testconf/netconf_client/tests/freenetconfd-plugins/sysrepo/' enter
+# tmux send-keys -t netconf:5 'node dummy_get.js'
+# 
+# tmux new-window -t netconf:6 -n 'freenetconfd'
+# tmux send-keys -t netconf:6 'sleep 2 ; cd /opt/dev/freenetconfd/build/' enter
+# tmux send-keys -t netconf:6 '../bin/freenetconfd' enter C-l
+# 
+# tmux new-window -t netconf:7 -n 'odl'
+# tmux send-keys -t netconf:7 'cd /opt/dev/opendaylight/' enter
+# tmux send-keys -t netconf:7 './bin/karaf' enter
+# 
+# tmux new-window -t netconf:8 -n 'proxy'
+# tmux send-keys -t netconf:8 'cd /opt/dev/www' enter
+# tmux send-keys -t netconf:8 'python2 server-foo-bar.py' enter
+# 
+# tmux new-window -t netconf:9 -n 'dlux'
+# tmux send-keys -t netconf:9 'cd /opt/dev/dlux/dlux-web' enter
+# tmux send-keys -t netconf:9 'grunt live' enter
+# 
+# tmux new-window -t netconf:10 -n 'curl'
+# tmux send-keys -t netconf:10 'curl http://admin:admin@127.0.0.1:8181/restconf/config/opendaylight-inventory:nodes/node/SYSREPO-DEMO/yang-ext:mount/'
