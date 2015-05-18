@@ -8,5 +8,5 @@ Homepage: http://www.sysrepo.org/
 
 Package: demo-sysrepo
 Architecture: amd64 i386
-Depends: sysrepod, sysrepo-cli, freenetconfd, freenetconfd-plugin-sysrepo, tmux
+Depends: hello-ifstat, sysrepod, sysrepo-cli, freenetconfd, freenetconfd-plugin-sysrepo, tmux
 Description: demo package for sysrepo
